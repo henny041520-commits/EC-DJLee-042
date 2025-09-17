@@ -7,7 +7,7 @@
 * 
 ******************************************************************************
 */
-
+#include "stm32f4xx.h"
 #include "ecRCC2.h"
 #include "ecGPIO2.h"
 
@@ -54,12 +54,10 @@ int main(void) {
     int buttonState = 1;  
     int prevState   = 1;   
     int count = 0;
-    int state = 1;
 
     while(1){
-        buttonState = GPIO_read(BUTTON_PIN) 
+        buttonState = GPIO_read(BUTTON_PIN) ? 1 : 0; 
 
-  
         if(prevState == 0 && buttonState == 1){
             count++;
         }
@@ -69,7 +67,8 @@ int main(void) {
             break;
         case 2 :
             GPIO_write(LED_PIN2, 0);
-            GPIO_write(LED_PIN3,1);   
+            GPIO_write(LED_PIN3,1);
+            break;
         case 3 :
             GPIO_write(LED_PIN3, 0);
             GPIO_write(LED_PIN4, 1);  
