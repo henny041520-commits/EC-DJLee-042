@@ -1,9 +1,9 @@
 /**
 ******************************************************************************
-* @author	your name
-* @Mod		date
+* @author	Dongjun, Lee
+* @Mod		09/16
 * @brief	Embedded Controller:  LAB Digital In/Out
-*					 - Toggle LED LD2 by Button B1 pressing
+*					 - LAB_GPIO_DIO_LED_Photosensor
 * 
 ******************************************************************************
 */
@@ -18,9 +18,8 @@ PinName_t button_pin = PA_0;
 void setup(void);
 	
 int main(void) { 
-	// Initialiization --------------------------------------------------------
+	
 	setup();
-	// Inifinite Loop ----------------------------------------------------------
 	while(1){
 		
 		if(GPIO_read(button_pin) == 0)	GPIO_write(LED_pin, 1);
@@ -29,13 +28,11 @@ int main(void) {
 	}
 }
 
-
-// Initialiization 
 void setup(void)
 {
 	RCC_HSI_init();	
-	GPIO_init(button_pin, INPUT);  // calls RCC_GPIOC_enable()
-	GPIO_init(LED_pin, OUTPUT);    // calls RCC_GPIOA_enable()
+	GPIO_init(button_pin, INPUT);  
+	GPIO_init(LED_pin, OUTPUT);   
 	GPIO_pupd(LED_pin, EC_PU);
 	GPIO_otype(LED_pin, 0);
 }

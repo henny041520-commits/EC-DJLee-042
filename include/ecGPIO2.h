@@ -44,7 +44,7 @@ Description      : Distributed to Students for LAB_GPIO
 #ifdef __cplusplus
  extern "C" {
 #endif /* __cplusplus */
-int GPIO_reset(PinName_t pinName);
+
 void GPIO_init(PinName_t pinName, uint32_t mode);     
 void GPIO_write(PinName_t pinName, int Output);
 int  GPIO_read(PinName_t pinName);

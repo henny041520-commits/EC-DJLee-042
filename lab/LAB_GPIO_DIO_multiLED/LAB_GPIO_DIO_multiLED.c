@@ -1,3 +1,13 @@
+/**
+******************************************************************************
+* @author	Dongjun, Lee
+* @Mod		09/16
+* @brief	Embedded Controller:  LAB Digital In/Out
+*					 - LAB_GPIO_DIO_multiLED
+* 
+******************************************************************************
+*/
+
 #include "ecRCC2.h"
 #include "ecGPIO2.h"
 
@@ -41,15 +51,15 @@ void setup(void) {
 	
 int main(void) { 
     setup();
-    int buttonState = 1;   // 초기 상태: 버튼 안눌림 (Active-Low, 풀업)
-    int prevState   = 1;   // 이전 상태 기억
+    int buttonState = 1;  
+    int prevState   = 1;   
     int count = 0;
     int state = 1;
 
     while(1){
-        buttonState = GPIO_read(BUTTON_PIN) ? 1 : 0;  // 0/1 정규화
+        buttonState = GPIO_read(BUTTON_PIN) 
 
-        // rising edge: 눌렸다가(0) 떼는 순간(1)
+  
         if(prevState == 0 && buttonState == 1){
             count++;
         }
@@ -59,21 +69,20 @@ int main(void) {
             break;
         case 2 :
             GPIO_write(LED_PIN2, 0);
-            GPIO_write(LED_PIN3,1);   // LED ON
-            break;
+            GPIO_write(LED_PIN3,1);   
         case 3 :
             GPIO_write(LED_PIN3, 0);
-            GPIO_write(LED_PIN4, 1);   // LED ON
+            GPIO_write(LED_PIN4, 1);  
             break;
         case 4 :
             GPIO_write(LED_PIN4, 0);
-            GPIO_write(LED_PIN5,1);   // LED ON
+            GPIO_write(LED_PIN5,1);   
             break;
         case 5 :
             GPIO_write(LED_PIN5, 0);
             count=1; 
             break;
         }
-         prevState = buttonState;      // 이전 상태 갱신
+         prevState = buttonState;      
     }
 }
