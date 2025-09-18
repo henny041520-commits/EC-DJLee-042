@@ -17,10 +17,12 @@
 
 void setup(void) {
 	RCC_HSI_init();
-
-	GPIO_init(BUTTON_PIN, INPUT);  
-	
-	GPIO_init(LED_PIN, OUTPUT);    
+    GPIO_init(BUTTON_PIN, INPUT);
+    GPIO_pupd(BUTTON_PIN, pullup);
+    GPIO_init(LED_PIN, OUTPUT);
+    GPIO_otype(LED_PIN, opendrain);
+    GPIO_pupd(LED_PIN, pullup);        
+    GPIO_ospeed(LED_PIN, mediumspeed);  
 
 }
 	

@@ -12,11 +12,11 @@
 #include "ecRCC2.h"
 #include "ecGPIO2.h"
 
-PinName_t LED_pin = PC_3;
+PinName_t LED_pin = PB_12;
 PinName_t button_pin = PA_0;
 
 void setup(void);
-	
+
 int main(void) { 
 	
 	setup();
@@ -30,10 +30,13 @@ int main(void) {
 
 void setup(void)
 {
-	RCC_HSI_init();	
-	GPIO_init(button_pin, INPUT);  
-	GPIO_init(LED_pin, OUTPUT);   
-	GPIO_pupd(LED_pin, EC_PU);
-	GPIO_otype(LED_pin, 0);
+	RCC_HSI_init();
+	GPIO_init(button_pin, INPUT);
+    GPIO_pupd(button_pin, pullup);     
+
+    GPIO_init(LED_pin, OUTPUT);
+    GPIO_otype(LED_pin, opendrain);  
+    GPIO_pupd(LED_pin, pullup);     
+    GPIO_ospeed(LED_pin, mediumspeed); 
 }
 
