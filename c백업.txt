@@ -13,21 +13,6 @@ Description      : Distributed to Students for LAB_GPIO
 #include "stm32f4xx.h"
 #include "stm32f411xe.h"
 #include "ecGPIO2.h"
-PinName_t svgpinsFND[12]={PB_7, PB_6, PB_5, PB_4, PB_3, PB_2, PB_1, PB_0, PC_3, PC_4, PA_11, PA_10};
-PinName_t svgpinsnum[8]={PB_7, PB_6, PB_5, PB_4, PB_3, PB_2, PB_1, PB_0};
-PinName_t svgpinsSelect[4]={ PC_3, PC_4, PA_11, PA_10};
- uint8_t svgvalue[10] = {
-    0b00111111,
-    0b00000110,
-    0b01011011,
-    0b01001111,
-    0b01100110,
-    0b01101101,
-    0b01111101,
-    0b00100111,
-    0b01111111,
-    0b01101111,
-    };
 
 void GPIO_init(PinName_t pinName, uint32_t mode){     
 	GPIO_TypeDef * Port;
@@ -102,7 +87,7 @@ int GPIO_read(PinName_t pinName){
 	return(btval);	
 }
 
- void GPIO_write(PinName_t pinName, int state){
+ GPIO_write(PinName_t pinName, int state){
    GPIO_TypeDef * Port;
    unsigned int pin;
 
@@ -118,35 +103,3 @@ int GPIO_read(PinName_t pinName){
    }
 
 }
-void seven_seg_FND_display(uint8_t  num, uint8_t select){
-    GPIO_write(svgpinsSelect[select], 1); 
-    for (int i=0; i<8;i++){
-         GPIO_write(svgpinsnum[7-i], (svgvalue[num]>>i )& 0x01); 
-    }
-}
-void seven_seg_FND_init(void){	
-    //pin name array
-   
-    for(int i=0;i<12;i++)
-    {
-    GPIO_init(svgpinsFND[i], OUTPUT); 
-    GPIO_init(PA_4, INPUT); 
-    GPIO_otype(svgpinsFND[i], pushpull);
-    GPIO_ospeed(svgpinsFND[i],mediumspeed);
-    GPIO_pupd(svgpinsFND[i],nopupd);
-    }
-    GPIO_pupd(PA_4,pullup);
-    
-}
-int readButtonRising(PinName_t pinName){
-    static int prev = 1;                 
-    int now = GPIO_read(pinName) ? 1 : 0;
-    int rising = 0;
-    if(prev==0 && now==1){
-        for(volatile int i=0;i<160000;i++); 
-        rising = 1;
-    }
-    prev = now;
-    return rising;
-}
-
