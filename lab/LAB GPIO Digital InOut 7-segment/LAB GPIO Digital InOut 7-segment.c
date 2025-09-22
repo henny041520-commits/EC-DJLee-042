@@ -3,7 +3,7 @@
 #include "ecRCC2.h"
 #include "stdio.h"
 
-// Initialize 7 DOUT pins for 7 segment leds
+
 void seven_seg_FND_init(void); 
 int readButtonRising(PinName_t pinName);
 void seven_seg_FND_display(uint8_t  num, uint8_t select);
@@ -29,7 +29,6 @@ int main(void) {
 }
 
 
-// Initialize DOUT pins for 7 segment leds
 
 
 
