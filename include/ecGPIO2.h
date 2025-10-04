@@ -53,9 +53,10 @@ void GPIO_ospeed(PinName_t pinName, int speed);
 void GPIO_otype(PinName_t pinName, int type);
 void GPIO_pupd(PinName_t pinName, int pupd);
 void seven_seg_FND_display(uint8_t  num, uint8_t select);
-void seven_seg_FND_init(void);
-void seven_seg_FND_display(uint8_t  num, uint8_t select);
+void seven_seg_FND_init(PinName_t pinName);
 int readButtonRising(PinName_t pinName);
+void sevenseg_clear(uint8_t  num);
+void delay(void);
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

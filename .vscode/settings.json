@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "ecgpio2.h": "c",
-        "stm32f4xx.h": "c"
+        "stm32f4xx.h": "c",
+        "ecstm32f4v2.h": "c"
     }
 }

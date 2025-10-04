@@ -124,19 +124,26 @@ void seven_seg_FND_display(uint8_t  num, uint8_t select){
          GPIO_write(svgpinsnum[7-i], (svgvalue[num]>>i )& 0x01); 
     }
 }
-void seven_seg_FND_init(void){	
-    //pin name array
-   
-    for(int i=0;i<12;i++)
+void seven_seg_FND_init(PinName_t pinName){	
+    for(int i=0;i<8;i++)
     {
-    GPIO_init(svgpinsFND[i], OUTPUT); 
-    GPIO_init(PA_4, INPUT); 
-    GPIO_otype(svgpinsFND[i], pushpull);
-    GPIO_ospeed(svgpinsFND[i],mediumspeed);
-    GPIO_pupd(svgpinsFND[i],nopupd);
+    GPIO_init(svgpinsnum[i], OUTPUT); 
+    GPIO_otype(svgpinsnum[i], pushpull);
+    GPIO_ospeed(svgpinsnum[i],mediumspeed);
+    GPIO_pupd(svgpinsnum[i],nopupd);
     }
-    GPIO_pupd(PA_4,pullup);
-    
+     for(int i=0;i<4;i++)
+    {
+    GPIO_init(svgpinsSelect[i], OUTPUT); 
+    GPIO_otype(svgpinsSelect[i], pushpull);
+    GPIO_ospeed(svgpinsSelect[i],mediumspeed);
+    GPIO_pupd(svgpinsSelect[i],nopupd);
+    }
+    GPIO_pupd(pinName,pullup);
+    GPIO_init(pinName, INPUT);
+}
+void delay(void){	
+        for(volatile int i=0;i<160000;i++); 
 }
 int readButtonRising(PinName_t pinName){
     static int prev = 1;                 
@@ -149,4 +156,6 @@ int readButtonRising(PinName_t pinName){
     prev = now;
     return rising;
 }
+void sevenseg_clear(uint8_t  num)
+{GPIO_write(svgpinsSelect[num], 0); }
 
