@@ -24,17 +24,17 @@ int main(void){
     }
 }
 
-// --- EXTI 인터럽트 핸들러 (PA4 → EXTI4) ---
+
 void EXTI4_IRQHandler(void){
 	
-    if(is_pending_EXTI(BUTTON_PIN)){       // 펜딩 확인
+    if(is_pending_EXTI(BUTTON_PIN)){     
         count++;
 		 if(count==20)
         {	 
 			count=0;
         }
-    } // LED 토글
-        clear_pending_EXTI(BUTTON_PIN);    // 펜딩 클리어
+    } 
+        clear_pending_EXTI(BUTTON_PIN);  
     }
 
  
