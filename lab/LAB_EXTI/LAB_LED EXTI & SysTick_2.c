@@ -12,9 +12,8 @@ int main(void) {
     uint8_t count = 0;
     while (1) {
         delay_ms(1000);
-        count++;
         seven_seg_FND_display(count%10,selectFND);
-        
+        count++;
     }
 }
 
