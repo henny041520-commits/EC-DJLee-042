@@ -41,7 +41,7 @@ void EXTI_init(PinName_t pinName, int trig_type,int priority){
 	else if	(pin < 10) 	EXTI_IRQn = EXTI9_5_IRQn;
 	else 			EXTI_IRQn = EXTI15_10_IRQn;
 								
-	NVIC_SetPriority(EXTI_IRQn, 0);	// EXTI priority
+	NVIC_SetPriority(EXTI_IRQn, priority);	// EXTI priority
 	NVIC_EnableIRQ(EXTI_IRQn); 	// EXTI IRQ enable
 }
 
@@ -64,7 +64,7 @@ uint32_t is_pending_EXTI(PinName_t pinName) {
 	unsigned int pin;
 	ecPinmap(pinName,&port,&pin);
 	uint32_t EXTI_PRx = EXTI->PR;     	// check  EXTI pending 	
-	return ((EXTI->PR & (1UL << pin)) == (1UL << pin));
+	return((EXTI->PR & (1UL << pin)) != 0);
 }
 
 void clear_pending_EXTI(PinName_t pinName) {

@@ -159,3 +159,9 @@ int readButtonRising(PinName_t pinName){
 void sevenseg_clear(uint8_t  num)
 {GPIO_write(svgpinsSelect[num], 0); }
 
+void LED_toggle(PinName_t pinName){
+   GPIO_TypeDef *Port;
+   unsigned int pin;
+   ecPinmap(pinName,&Port,&pin);
+   Port->ODR ^= (1U << pin);
+}
