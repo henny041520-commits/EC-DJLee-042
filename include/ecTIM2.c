@@ -117,7 +117,7 @@ void TIM_UI_init(TIM_TypeDef* TIMx, uint32_t msec){
 	 
     // 2. Enable Update Interrupt
 	TIM_UI_enable(TIMx);
-	
+	TIM_period_ms(TIMx, msec);
     // 3. NVIC Setting
 	uint32_t IRQn_reg =0;
 	if(TIMx == TIM1)       IRQn_reg = TIM1_UP_TIM10_IRQn;

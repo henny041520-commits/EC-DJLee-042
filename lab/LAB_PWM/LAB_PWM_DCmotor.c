@@ -41,6 +41,7 @@ void setup(void){
   apply_duty_from_state();
   TIM_UI_init(TIM3, 500);
   TIM_UI_enable(TIM3);
+
 }
 int main(void){
   setup();
