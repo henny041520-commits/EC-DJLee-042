@@ -127,13 +127,14 @@ void TIM4_IRQHandler(void)
  }
  if(toggle2==1)
         {
-          LED_toggle(LED);
+          LED_toggle();
           delay_ms(500);
         }
+         clear_UIF(TIM4);
+}
   
 }
-   clear_UIF(TIM4);
-}
+  
 
 void TIM2_IRQHandler(void)
 {   if(is_UIF(TIM2))

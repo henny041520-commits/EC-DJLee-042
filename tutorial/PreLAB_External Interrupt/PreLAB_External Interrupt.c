@@ -35,7 +35,9 @@ void EXTI4_IRQHandler(void) {
 		EXTI->PR |= EXTI_PR_PR4; // cleared by writing '1'
 }}
 void LED_toggle(PinName_t pinName){
+
 	GPIO_TypeDef *Port;
 	unsigned int pin;
 	ecPinmap(pinName,&Port,&pin);
-	 Port->ODR ^= (1UL << pin); }
+	 Port->ODR ^= (1UL << pin); 
+	}

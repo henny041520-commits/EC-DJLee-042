@@ -80,7 +80,7 @@ void EXTI15_10_IRQHandler(void){
 			count=0;
             angle= 10;
             PWM_pulsewidth_ms(RC_PWM, angle_to_ms(0));
-            clear_pending_EXTI(Button);  
+            
     } 
         
     }
