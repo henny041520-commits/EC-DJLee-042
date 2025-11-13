@@ -9,10 +9,12 @@
 #include "ecTIM2.h"
 #include "ecPWM2.h"
 
-#define DC_PWM   PA_0    
+// #define DC_PWM   PA_0    
+// #define Button   PC_13    
+// #define Direc    PC_2     
+#define DC_PWM   PA_1    
 #define Button   PC_13    
-#define Direc    PC_2     
-
+#define Direc    PC_3  
 static int run_toggle = 1;  
 static int duty_state = 0; 
 static int  count = 0;   
@@ -29,7 +31,7 @@ void setup(void){
   EXTI_init(Button, FALL, 1);
   GPIO_init(Direc, OUTPUT);
   GPIO_otype(Direc, pushpull);
-  GPIO_write(Direc, 1);
+  GPIO_write(Direc, 0);
   GPIO_init(DC_PWM, AF);
   GPIO_ospeed(DC_PWM, fastspeed);
   GPIO_otype(DC_PWM, pushpull);

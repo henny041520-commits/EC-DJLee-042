@@ -30,6 +30,11 @@ Description      : Distributed to Students for LAB_GPIO
 #define pulldown 10
 #define reversed 11
 #define nopupd 00
+#define EC_NONE 0
+#define EC_LOW 0
+#define EC_MEDIUM 0
+#define EC_FAST 2
+#define EC_HIGH 3
 // GPIO Output Type: Output push-pull (0, reset), Output open drain (1)
 // GPIO Push-Pull    : No pull-up, pull-down (00), Pull-up (01), Pull-down (10), Reserved (11)
 // GPIO Speed          : Low speed (00), Medium speed (01), Fast speed (10), High speed (11)

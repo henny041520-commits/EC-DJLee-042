@@ -19,37 +19,35 @@ void setup(void);
 int main(void) { 
 	// Initialiization --------------------------------------------------------
 		setup();
-	// Stepper_setSpeed(2); 
-	// Stepper_step(2048*10, 1, FULL);
-	// delay_ms(500);
-	// Stepper_setSpeed(2); 
-	// Stepper_step(2048*10, 0, FULL); 
-	// delay_ms(500);
-	// Stepper_setSpeed(minspeed);  
-	// Stepper_step(2048, 1, FULL);
-	// delay_ms(500);
-	// Stepper_setSpeed(maxspeed);
-	// Stepper_step(2048, 1, FULL); 
-	// delay_ms(500);
+	Stepper_setSpeed(2); 
+	Stepper_step(2048*10, 1, FULL);
+	delay_ms(500);
+	Stepper_setSpeed(2); 
+	Stepper_step(2048*10, 0, FULL); 
+	delay_ms(500);
+	Stepper_setSpeed(minspeed);  
+	Stepper_step(2048, 1, FULL);
+	delay_ms(500);
+	Stepper_setSpeed(maxspeed);
+	Stepper_step(2048, 1, FULL); 
+	delay_ms(500);
 
 
 	Stepper_setSpeed(4); 
 	Stepper_step(2048*2, 1, HALF);
-	// delay_ms(500);
-	// Stepper_setSpeed(4); 
-	// Stepper_step(2048*20, 0, HALF);
-	// delay_ms(500);
-	// Stepper_setSpeed(hminspeed);  
-	// Stepper_step(2048*2, 1, HALF);
-	// delay_ms(500);
-	// Stepper_setSpeed(hmaxspeed);
-	// Stepper_step(2048*2, 1, HALF); 
-	// delay_ms(500);
+	delay_ms(500);
+	Stepper_setSpeed(4); 
+	Stepper_step(2048*20, 0, HALF);
+	delay_ms(500);
+	Stepper_setSpeed(hminspeed);  
+	Stepper_step(2048*2, 1, HALF);
+	delay_ms(500);
+	Stepper_setSpeed(hmaxspeed);
+	Stepper_step(2048*2, 1, HALF); 
+	delay_ms(500);
 	
 	
-	  // (Step : 2048, Direction : 0 or 1, Mode : FULL or HALF)
-	
-	// Inifinite Loop ----------------------------------------------------------
+	  
 	while(1){
 	;
 	}

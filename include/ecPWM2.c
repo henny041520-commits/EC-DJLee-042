@@ -48,7 +48,7 @@ void PWM_init(PinName_t pinName){
 	
 	
 // 3. Initialize Timer 
-	TIM_init(TIMx);	// with default msec=1msec value.		
+	TIM_init(TIMx,1);	// with default msec=1msec value.		
 	TIMx->CR1 &= ~TIM_CR1_CEN;
 	
 // 3-2. Direction of Counter

@@ -14,7 +14,7 @@
 /* Timer Configuration */
 
 // Default Setting:  1 msec of TimerUEV with Counter_Clk 100kHz / PSC=840-1, ARR=100-1
-void TIM_init(TIM_TypeDef* TIMx){     
+void TIM_init(TIM_TypeDef* TIMx, uint32_t msec){     
     // Previous version:  void TIM_init(TIM_TypeDef* TIMx, uint32_t msec) 	
     // 1. Enable Timer CLOCK
 	if(TIMx ==TIM1) RCC->APB2ENR |= RCC_APB2ENR_TIM1EN;
@@ -27,7 +27,7 @@ void TIM_init(TIM_TypeDef* TIMx){
 	else if(TIMx ==TIM11) RCC->APB2ENR |= 1<<18;
 	
     // 2. Set CNT period
-	 uint32_t msec=1;
+	//  uint32_t msec=1;
 	TIM_period_ms(TIMx, msec); 
 	
 	
@@ -113,7 +113,7 @@ void TIM_period(TIM_TypeDef* TIMx, uint32_t msec){
 // Update Event Interrupt
 void TIM_UI_init(TIM_TypeDef* TIMx, uint32_t msec){
     // 1. Initialize Timer	
-	TIM_init(TIMx);
+	TIM_init(TIMx,1);
 	 
     // 2. Enable Update Interrupt
 	TIM_UI_enable(TIMx);
