@@ -48,7 +48,7 @@ void PWM_init(PinName_t pinName){
 	
 	
 // 3. Initialize Timer 
-	TIM_init(TIMx,1);	// with default msec=1msec value.		
+	TIM_init(TIMx);	// with default msec=1msec value.		
 	TIMx->CR1 &= ~TIM_CR1_CEN;
 	
 // 3-2. Direction of Counter
@@ -254,8 +254,7 @@ void PWM_duty(PinName_t pinName, float duty){
 }
 
 // DO NOT MODIFY HERE
-void PWM_pinmap(PinName_t pinName, TIM_TypeDef **TIMx, int *chN)
-{
+void PWM_pinmap(PinName_t pinName, TIM_TypeDef **TIMx, int *chN){
 	GPIO_TypeDef *port;
 	unsigned int pin;		
 	ecPinmap(pinName, &port, &pin);	
@@ -290,7 +289,7 @@ void PWM_pinmap(PinName_t pinName, TIM_TypeDef **TIMx, int *chN)
          default: break;
       }
    }
-   else if(port == GPIOC) {
+   else if(port == GPIOC){
       switch(pin){
          case 6 : *TIMx = TIM3; *chN = 1; break;
          case 7 : *TIMx = TIM3; *chN = 2; break;

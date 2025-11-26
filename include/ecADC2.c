@@ -21,7 +21,7 @@ void ADC_init(PinName_t pinName){
 // GPIO configuration ---------------------------------------------------------------------	
 // 1. Initialize GPIO port and pin as ANALOG, no pull up / pull down
 	GPIO_init(pinName, ANALOG);  				// ANALOG = 3
-	GPIO_pupd(pinName, EC_NONE);  			// EC_NONE = 0
+	GPIO_pupd(pinName,EC_NONE);  			// EC_NONE = 0
 
 // ADC configuration	---------------------------------------------------------------------			
 // 1. Total time of conversion setting
@@ -95,7 +95,7 @@ void ADC_trigger(TIM_TypeDef* TIMx, int msec, int edge){
 	// Enable TIMx Clock as TRGO mode	
 // 1. TIMx Trigger Output Config
 	// Enable TIMx Clock
-	TIM_init(TIMx, msec);
+	TIM_init(TIMx);
 	TIMx->CR1 &= ~TIM_CR1_CEN; 								//counter disable
 	
 	// Set PSC, ARR
@@ -293,7 +293,7 @@ void JADC_trigger(TIM_TypeDef* TIMx, int msec, int edge){
 	// Enable TIMx Clock as TRGO mode
 // 1. TIMx Trigger Output Config
 	// Enable TIMx Clock
-	TIM_init(TIMx, msec);
+	TIM_init(TIMx);
 	TIMx->CR1 &= ~(1UL << 0); 							//counter disable
 	
 	// Set PSC, ARR

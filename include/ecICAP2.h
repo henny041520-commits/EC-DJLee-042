@@ -25,6 +25,8 @@ extern "C" {
 #define IC_3 3
 #define IC_4 4
 
+uint32_t ICAP_read(TIM_TypeDef *TIMx, int ch);
+
 // Input Capture
 
 void ICAP_pinmap(PinName_t pinName, TIM_TypeDef **TIMx, int *chN);

@@ -21,13 +21,13 @@ typedef struct{
 	PinName_t pin2;
 	PinName_t pin3;
 	PinName_t pin4;
-	uint32_t _step_num;
+	int _step_num;
 } Stepper_t;
 
 	 
 void Stepper_init(PinName_t pinName1, PinName_t pinName2, PinName_t pinName3, PinName_t pinName4);
 void Stepper_setSpeed(long whatSpeed);
-void Stepper_step(uint32_t steps, uint32_t direction, uint32_t mode); 
+void Stepper_step(int steps, int direction, int mode); 
 void Stepper_stop(void);
 
 
@@ -36,4 +36,4 @@ void Stepper_stop(void);
 }
 #endif /* __cplusplus */
 
-#endif // __EC_STEPPER2_H
+#endif // __EC_STEPPER2_

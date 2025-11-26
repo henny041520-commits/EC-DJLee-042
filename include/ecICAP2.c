@@ -187,6 +187,9 @@ void clear_CCIF(TIM_TypeDef *TIMx, uint32_t ccNum) {
     TIMx->SR &= ~(1 << ccNum);
 }
 
+
+
+
 // Needed for Input Capture
 void ICAP_pinmap(PinName_t pinName, TIM_TypeDef **TIMx, int *chN) {
     GPIO_TypeDef *port;
@@ -211,7 +214,7 @@ void ICAP_pinmap(PinName_t pinName, TIM_TypeDef **TIMx, int *chN) {
                 *TIMx = TIM3;
                 *chN = 1;
                 break;
-            // case 7: *TIMx = TIM1; *chN = 1N; break;
+            // case 7: *TIMx = TIM1; *chN = 1; break;
             case 8:
                 *TIMx = TIM1;
                 *chN = 1;

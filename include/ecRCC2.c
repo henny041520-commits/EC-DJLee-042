@@ -17,12 +17,11 @@ void RCC_HSI_init() {
   RCC->CFGR |= (uint32_t)RCC_CFGR_SW_HSI; 								//00: HSI16 oscillator used as system clock
 
 	// Wait till HSI is used as system clock source
-  while ((RCC->CFGR & (uint32_t)RCC_CFGR_SWS) != 0 ){
+  while ((RCC->CFGR & (uint32_t)RCC_CFGR_SWS) != 0 );
 		   
 	//EC_SYSTEM_CLK=16000000;
 		//EC_SYSCLK=16000000;
 		EC_SYSCLK=16000000;
-  }
 }
 
 void RCC_PLL_init() {	
@@ -90,11 +89,19 @@ void RCC_GPIOC_enable()
 	// RCC Peripheral Clock Enable Register 
 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOCEN;
 }
+
 void RCC_GPIOD_enable()
 {
 	// RCC Peripheral Clock Enable Register 
 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIODEN;
 }
+
+void RCC_GPIOE_enable()
+{
+	// RCC Peripheral Clock Enable Register 
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOEEN;
+}
+
 void RCC_GPIOH_enable()
 {
 	// RCC Peripheral Clock Enable Register 

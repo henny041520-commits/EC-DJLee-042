@@ -45,7 +45,6 @@ void SysTick_counter(){
 	msTicks++;
 }	
 
-
 void delay_ms (uint32_t mesc){
   uint32_t curTicks;
 
@@ -54,6 +53,7 @@ void delay_ms (uint32_t mesc){
 	
   msTicks = 0;
 }
+
 
 //void delay_ms(uint32_t msec){
 //	uint32_t now=SysTick_val(); 

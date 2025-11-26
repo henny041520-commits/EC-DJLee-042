@@ -1,9 +1,9 @@
 /*----------------------------------------------------------------\
-@ Embedded Controller by Young-Keun Kim - Handong Global University
-Author           : SSS LAB
-Created          : 05-03-2021
-Modified         : 08-23-2024
-Language/ver     : C++ in Keil uVision
+@ Embedded Controller by Sang-Yoon Kim - Handong Global University
+Author           : Sang Yoon Kim
+Created          : 09-16-2025
+Modified         : 09-16-2025
+Language/ver     : C in Keil uVision
 
 Description      : Distributed to Students for LAB_GPIO
 /----------------------------------------------------------------*/
@@ -15,6 +15,25 @@ Description      : Distributed to Students for LAB_GPIO
 #include "stm32f411xe.h"
 #include "ecRCC2.h"
 #include "ecPinNames.h"
+
+#define INPUT  0x00
+#define OUTPUT 0x01
+#define AF     0x02
+#define ANALOG 0x03
+#define EC_NO_PUPD  0   // 00: no pull
+#define EC_PU       1   // 01: pull-up
+#define EC_PD       2   // 10: pull-down
+#define EC_HIGH 11
+#define pull-up 0
+#define open-drain 1
+#define EC_NONE 0
+
+#define HIGH 1
+#define LOW  0
+
+#define LED_PIN 
+#define BUTTON_PIN
+
 
 #define INPUT  0x00
 #define OUTPUT 0x01
@@ -35,35 +54,30 @@ Description      : Distributed to Students for LAB_GPIO
 #define EC_MEDIUM 0
 #define EC_FAST 2
 #define EC_HIGH 3
-// GPIO Output Type: Output push-pull (0, reset), Output open drain (1)
-// GPIO Push-Pull    : No pull-up, pull-down (00), Pull-up (01), Pull-down (10), Reserved (11)
-// GPIO Speed          : Low speed (00), Medium speed (01), Fast speed (10), High speed (11)
-#define HIGH 1
-#define LOW  0
-
-//#define LED_PIN    0x05
-//#define BUTTON_PIN 0x23
-
-#define EC_PU 0
 
 #ifdef __cplusplus
  extern "C" {
 #endif /* __cplusplus */
-void LED_toggle(/*PinName_t pinName*/void);
-void GPIO_init(PinName_t pinName, uint32_t mode);     
+	 
+void GPIO_init(PinName_t pinName, int mode);
 void GPIO_write(PinName_t pinName, int Output);
 int  GPIO_read(PinName_t pinName);
-void GPIO_mode(PinName_t pinName, uint32_t mode);
+void GPIO_mode(PinName_t pinName, int mode);
 void GPIO_ospeed(PinName_t pinName, int speed);
 void GPIO_otype(PinName_t pinName, int type);
 void GPIO_pupd(PinName_t pinName, int pupd);
+// Initialize 7 DOUT pins for 7 segment leds
+void seven_seg_FND_init(void); 
+
+// Select display: 0 to 3
+// Display a number 0 - 9 only
 void seven_seg_FND_display(uint8_t  num, uint8_t select);
-void seven_seg_FND_init(PinName_t pinName);
-int readButtonRising(PinName_t pinName);
-void sevenseg_clear(uint8_t  num);
-void delay(void);
+void sevensegment_display_MultiPlex(uint8_t num);
+void sevenSegment_breadboard(int num);
+void LED_toggle(PinName_t pinName);
+ 
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
 
-#endif // __ECGPIO2_H
+#endif

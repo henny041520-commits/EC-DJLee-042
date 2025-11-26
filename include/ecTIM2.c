@@ -14,7 +14,7 @@
 /* Timer Configuration */
 
 // Default Setting:  1 msec of TimerUEV with Counter_Clk 100kHz / PSC=840-1, ARR=100-1
-void TIM_init(TIM_TypeDef* TIMx, uint32_t msec){     
+void TIM_init(TIM_TypeDef* TIMx){     
     // Previous version:  void TIM_init(TIM_TypeDef* TIMx, uint32_t msec) 	
     // 1. Enable Timer CLOCK
 	if(TIMx ==TIM1) RCC->APB2ENR |= RCC_APB2ENR_TIM1EN;
@@ -27,7 +27,7 @@ void TIM_init(TIM_TypeDef* TIMx, uint32_t msec){
 	else if(TIMx ==TIM11) RCC->APB2ENR |= 1<<18;
 	
     // 2. Set CNT period
-	//  uint32_t msec=1;
+	 uint32_t msec=1;
 	TIM_period_ms(TIMx, msec); 
 	
 	
@@ -40,7 +40,13 @@ void TIM_init(TIM_TypeDef* TIMx, uint32_t msec){
 
 // Timer Update Event Period  1~6000 usec  with 1MHz Couter / ARR=1* usec
 void TIM_period_us(TIM_TypeDef *TIMx, uint32_t usec){   
+	//	Q. Which combination of PSC and ARR for msec unit?
+    // 	Q. What are the possible range (in sec ?)
 
+	// 0.01ms(100kHz, ARR = 1) to 655 msec (ARR = 0xFFFF)
+	// 0.01ms(100kHz, ARR = 1) to 40,000,000 msec (ARR = 0xFFFF FFFF)
+
+	// 1us(1MHz, ARR=1) to 65msec (ARR=0xFFFF)
 	uint16_t PSCval;
 	uint32_t Sys_CLK;
 
@@ -74,7 +80,13 @@ void TIM_period_us(TIM_TypeDef *TIMx, uint32_t usec){
 // Timer Update Event Period  1~600 msec  with 100kHz Couter / ARR=100*msec
 void TIM_period_ms(TIM_TypeDef* TIMx, uint32_t msec){ 
 	
-	
+	//	Q. Which combination of PSC and ARR for msec unit?
+	// 	Q. What are the possible range (in msec ?)
+
+    // 0.02ms(50kHz, ARR=1) to 1.3sec (ARR=0xFFFF)
+	//uint32_t prescaler = 1680;
+
+	// 0.1ms(10kHz, ARR = 1) to 6.5sec (ARR = 0xFFFF)
 	
 	uint16_t PSCval;
 	uint32_t Sys_CLK;
@@ -113,11 +125,12 @@ void TIM_period(TIM_TypeDef* TIMx, uint32_t msec){
 // Update Event Interrupt
 void TIM_UI_init(TIM_TypeDef* TIMx, uint32_t msec){
     // 1. Initialize Timer	
-	TIM_init(TIMx,1);
-	 
+	TIM_init(TIMx);
+	// TIM_period_us(TIMx,msec);
+	TIM_period_ms(TIMx,msec);
     // 2. Enable Update Interrupt
 	TIM_UI_enable(TIMx);
-	TIM_period_ms(TIMx, msec);
+	
     // 3. NVIC Setting
 	uint32_t IRQn_reg =0;
 	if(TIMx == TIM1)       IRQn_reg = TIM1_UP_TIM10_IRQn;

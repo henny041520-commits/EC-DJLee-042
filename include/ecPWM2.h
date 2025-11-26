@@ -42,6 +42,8 @@ void PWM_pulsewidth_ms(PinName_t pinName, double pulse_width_ms);  // same as vo
 // Duty ratio 0~1.0
 void PWM_duty(PinName_t pinName, float duty);
 
+void PWM_pulsewidth_us(PinName_t pinName, double pulse_width_us); 
+
 
 #ifdef __cplusplus
 }
