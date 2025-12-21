@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "../../../EC"
+		},
+		{
+			"name": "LAB_GPIO_DIO_LED",
+			"path": "lab/LAB_GPIO_DIO_LED"
+		},
+		{
+			"name": "LAB_GPIO_DIO_LED_Photosensor",
+			"path": "lab/LAB_GPIO_DIO_LED_Photosensor"
+		},
+		{
+			"name": "EC-Dongjun-042",
+			"path": "."
+		}
+	],
+	"settings": {
+		"python-envs.defaultEnvManager": "ms-python.python:system"
+	}
+}

@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "ecgpio2.h": "c",
+        "stm32f4xx.h": "c",
+        "ecstm32f4v2.h": "c",
+        "ectim2.h": "c",
+        "ecstepper2.h": "c",
+        "ecpwm2.h": "c",
+        "ecicap2.h": "c"
+    }
+}
